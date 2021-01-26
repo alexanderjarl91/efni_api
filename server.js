@@ -4,6 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const productsRoute = require('./routes/products');
+const dotenv = require('dotenv').config();
 
 const PORT = process.env.PORT || 5000;
 
@@ -12,7 +13,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use("/products", productsRoute);
-mongoose.connect('mongodb+srv://admin:admin@cluster0.inf8y.mongodb.net/products?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true}, () => {
+const MONGO_URI = process.env.MONGODB_URI;
+mongoose.connect(MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true}, () => {
   console.log('Connected to db...');
 });
 
