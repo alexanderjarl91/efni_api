@@ -27,8 +27,11 @@ router.post("/", async (req, res) => {
   console.log(req.body);
   //new post made from the Post.js schema in models folder, values efined as req.body.whatever
   const newProduct = new Product({
-    name: req.body.name,
-    price: req.body.price
+    productname: req.body.name,
+    productprice: req.body.price,
+    productImg: req.body.img,
+    productOnSale: req.body.sale,
+    productDescription: req.body.description
   });
   //save post
   try {
