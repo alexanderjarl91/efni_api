@@ -42,16 +42,6 @@ app.get('/collections', async (req, res) => {
   res.send(collectionObj);
 });
 
-// app.get('/', (req, res) => {
-//   Product.find()
-//   .then((result) => {
-//     res.send(JSON.stringify(result));
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   })
-// });
-
 app.listen(PORT, () => {
   console.log('server running on port: ' + PORT);
 });

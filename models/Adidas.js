@@ -8,4 +8,4 @@ const adidasSchema = mongoose.Schema({
   productDescription: {type: String}
 });
 
-module.exports = mongoose.model('adidas', adidasSchema);
+module.exports = mongoose.model('adidas', adidasSchema, 'adidas');
