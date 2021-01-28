@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
     productName: req.body.productName,
     productPrice: req.body.productPrice,
     productImg: req.body.productImg,
-    productOnSale: req.body.productSale,
+    productOnSale: req.body.productOnSale,
     productDescription: req.body.productDescription
   });
   //save post

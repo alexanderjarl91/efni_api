@@ -4,7 +4,10 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const productsRoute = require('./routes/products');
+const staffRoute = require('./routes/staff');
 const dotenv = require('dotenv').config();
+const Product = require('./models/Product');
+const Staff = require('./models/Staff');
 
 const PORT = process.env.PORT || 5000;
 
@@ -13,8 +16,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use("/products", productsRoute);
+app.use("/staff", staffRoute);
 const MONGO_URI = process.env.MONGODB_URI;
-mongoose.connect(MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true}, () => {
+
+const connection = mongoose.connect(MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true}, () => {
   console.log('Connected to db...');
 });
 
@@ -22,6 +27,20 @@ app.get('/', (req, res) => {
   res.send('Homeee');
 });
 
+const getDocCount = async () => {
+  const prodCount = await Product.countDocuments();
+  const staffCount = await Staff.countDocuments();
+  return [prodCount, staffCount];
+}
+
+app.get('/collections', async (req, res) => {
+  const counts = await getDocCount();
+  const collections = Object.keys(mongoose.connection.collections);
+  const collectionObj = collections.map((item, index) => {
+    return {"collection": item, "documentCount": counts[index]};
+  })
+  res.send(collectionObj);
+});
 
 // app.get('/', (req, res) => {
 //   Product.find()
