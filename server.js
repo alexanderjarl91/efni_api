@@ -4,6 +4,8 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const productsRoute = require('./routes/products');
+const nikeRoute = require('./routes/nike');
+const adidasRoute = require('./routes/adidas');
 const staffRoute = require('./routes/staff');
 const dotenv = require('dotenv').config();
 const Product = require('./models/Product');
@@ -15,8 +17,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use("/nike", productsRoute);
-app.use("/adidas", productsRoute);
+app.use("/nike", nikeRoute);
+app.use("/adidas", adidasRoute);
 app.use("/staff", staffRoute);
 const MONGO_URI = process.env.MONGODB_URI;
 
