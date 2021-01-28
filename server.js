@@ -9,7 +9,8 @@ const adidasRoute = require('./routes/adidas');
 const staffRoute = require('./routes/staff');
 const dotenv = require('dotenv').config();
 const Product = require('./models/Product');
-const Staff = require('./models/Staff');
+const Nike = require('./models/Nike');
+const Adidas = require('./models/Adidas');
 
 const PORT = process.env.PORT || 5000;
 
@@ -19,7 +20,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use("/nike", nikeRoute);
 app.use("/adidas", adidasRoute);
-app.use("/staff", staffRoute);
 const MONGO_URI = process.env.MONGODB_URI;
 
 const connection = mongoose.connect(MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true}, () => {
@@ -31,9 +31,9 @@ app.get('/', (req, res) => {
 });
 
 const getDocCount = async () => {
-  const prodCount = await Product.countDocuments();
-  const staffCount = await Staff.countDocuments();
-  return [prodCount, staffCount];
+  const nikeCount = await Nike.countDocuments();
+  const adidasCount = await Adidas.countDocuments();
+  return [nikeCount, adidasCount];
 }
 
 app.get('/collections', async (req, res) => {

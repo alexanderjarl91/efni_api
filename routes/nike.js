@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 // Get specific product
 router.get("/:productId", async (req, res) => {
   try {
-    const product = await Product.findById(req.params.productId);
+    const product = await Nike.findById(req.params.productId);
     res.json(product);
   } catch (err) {
     res.json({ message: err });
@@ -26,7 +26,7 @@ router.get("/:productId", async (req, res) => {
 router.post("/", async (req, res) => {
   console.log(req.body);
   //new post made from the Post.js schema in models folder, values efined as req.body.whatever
-  const newProduct = new Product({
+  const newProduct = new Nike({
     productName: req.body.productName,
     productPrice: req.body.productPrice,
     productImg: req.body.productImg,
@@ -51,7 +51,7 @@ router.patch("/:productId", async (req, res) => {
     updateOps[ops.propName] = ops.value;
   }
   try {
-    const updatedProduct = await Product.updateOne({ _id: id }, { $set: updateOps })
+    const updatedProduct = await Nike.updateOne({ _id: id }, { $set: updateOps })
     res.json(updatedProduct);
   } catch (err) {
     res.json({ message: err });
@@ -61,7 +61,7 @@ router.patch("/:productId", async (req, res) => {
 // Delete Post
 router.delete("/:productId", async (req, res) => {
   try {
-    const removedProduct = await Product.remove({_id: req.params.productId });
+    const removedProduct = await Nike.remove({_id: req.params.productId });
     res.json(removedProduct);
   } catch (err) {
     res.json({ message: err });
