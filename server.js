@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 const productsRoute = require('./routes/products');
 const nikeRoute = require('./routes/nike');
 const adidasRoute = require('./routes/adidas');
-const staffRoute = require('./routes/staff');
 const dotenv = require('dotenv').config();
 const Product = require('./models/Product');
 const Nike = require('./models/Nike');
