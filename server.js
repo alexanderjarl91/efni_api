@@ -15,7 +15,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use("/products", productsRoute);
+app.use("/nike", productsRoute);
+app.use("/adidas", productsRoute);
 app.use("/staff", staffRoute);
 const MONGO_URI = process.env.MONGODB_URI;
 
