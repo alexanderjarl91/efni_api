@@ -8,4 +8,4 @@ const nikeSchema = mongoose.Schema({
   productDescription: {type: String}
 });
 
-module.exports = mongoose.model('nike', nikeSchema);
+module.exports = mongoose.model('nike', nikeSchema, 'nike');
