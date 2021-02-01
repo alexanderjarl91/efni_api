@@ -29,7 +29,7 @@ router.get("/:productId", async (req, res) => {
     const product = await Nike.findById(req.params.productId);
     res.json(product);
   } catch (err) {
-    res.json({ message: err });
+    res.status(404).json({ msg: `No collection with the given id: ${req.params.productId}`, error: err });
   }
 });
 
