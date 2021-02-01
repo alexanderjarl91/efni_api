@@ -65,7 +65,7 @@ https://efni-api.herokuapp.com/adidas
 This is a locked demonstration endpoint that delivers the adidas collection. It lists products using the same model as the the /nike endpoint but is only accessable with an API key.
 
 
-### /<collection>/<_id>
+### /collection/<_id>
 
 ```
 https://efni-api.herokuapp.com/YourCollection/YourProductID
