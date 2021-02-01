@@ -55,18 +55,37 @@ router.post("/", async (req, res) => {
 
 // Update product
 router.patch("/:productId", async (req, res) => {
-  const id = req.params.productId;
-  const updateOps = {};
-  for (const ops of req.body) {
-    updateOps[ops.propName] = ops.value;
-  }
-  try {
-    const updatedProduct = await Adidas.updateOne({ _id: id }, { $set: updateOps })
-    res.json(updatedProduct);
-  } catch (err) {
-    res.json({ message: err });
-  }
-});
+	try {
+		const post = await Adidas.findOne({ _id: req.params.productId })
+
+		if (req.body.productName) {
+			post.productName = req.body.productName
+		}
+
+		if (req.body.productPrice) {
+			post.productPrice = req.body.productPrice
+    }
+    
+		if (req.body.productImg) {
+			post.productImg = req.body.productImg
+    }
+    
+		if (req.body.productOnSale) {
+			post.productOnSale = req.body.productOnSale
+    }
+    
+		if (req.body.productDescription) {
+			post.productDescription = req.body.productDescription
+		}
+
+		await post.save()
+		res.send(post)
+	} catch {
+		res.status(404)
+		res.send({ error: "Post doesn't exist!" })
+	}
+})
+
 
 // Delete Post
 router.delete("/:productId", async (req, res) => {

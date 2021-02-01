@@ -23,15 +23,15 @@ const connection = mongoose.connect(MONGO_URI, {useNewUrlParser: true, useUnifie
   console.log('Connected to db...');
 });
 
-app.get('*', function (req, res, next) {
-  if (req.headers['x-forwarded-proto'] === 'https') {
-          // request was via https, so do no special handling
-          next();
-  } else {
-          // request was via http, so redirect to https
-          res.redirect('https://' + req.headers.host + req.url);
-  }
-});
+// app.get('*', function (req, res, next) {
+//   if (req.headers['x-forwarded-proto'] === 'https') {
+//           // request was via https, so do no special handling
+//           next();
+//   } else {
+//           // request was via http, so redirect to https
+//           res.redirect('https://' + req.headers.host + req.url);
+//   }
+// });
 
 app.get('/', (req, res) => {
   res.send('Homeee');
