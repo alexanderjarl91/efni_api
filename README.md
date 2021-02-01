@@ -38,7 +38,7 @@ GET /yourEcommerceEndpoint
 ## Endpoints;
 
 
-/
+
 
 ### /collections
 
