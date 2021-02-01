@@ -23,7 +23,7 @@ const connection = mongoose.connect(MONGO_URI, {useNewUrlParser: true, useUnifie
   console.log('Connected to db...');
 });
 
-app.use (function (req, res, next) {
+app.get('*', function (req, res, next) {
   if (req.headers['x-forwarded-proto'] === 'https') {
           // request was via https, so do no special handling
           next();
