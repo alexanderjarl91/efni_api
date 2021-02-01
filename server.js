@@ -24,6 +24,8 @@ const connection = mongoose.connect(MONGO_URI, {useNewUrlParser: true, useUnifie
 });
 
 app.get('/', (req, res) => {
+  res.redirect('https://' + req.headers.host + req.url);
+
   res.send('Homeee');
 });
 
