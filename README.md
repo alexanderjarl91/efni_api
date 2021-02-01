@@ -21,7 +21,7 @@ All responses return data in JSON format.
 
 #### Model Example:
 ```
-GET /yourEndpoint
+GET /yourEcommerceEndpoint
 ```
 
 ```
