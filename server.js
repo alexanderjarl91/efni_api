@@ -11,8 +11,6 @@ const Adidas = require('./models/Adidas');
 
 const PORT = process.env.PORT || 5000;
 
-const env = process.env.NODE_ENV || 'development';
-
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -25,21 +23,15 @@ const connection = mongoose.connect(MONGO_URI, {useNewUrlParser: true, useUnifie
   console.log('Connected to db...');
 });
 
-var forceSsl = function (req, res, next) {
-  if (req.headers['x-forwarded-proto'] !== 'https') {
-      return res.redirect(['https://', req.get('Host'), req.url].join(''));
+app.use (function (req, res, next) {
+  if (req.headers['x-forwarded-proto'] === 'https') {
+          // request was via https, so do no special handling
+          next();
+  } else {
+          // request was via http, so redirect to https
+          res.redirect('https://' + req.headers.host + req.url);
   }
-  return next();
-};
-
-app.configure(function () {      
-  if (env === 'production') {
-      app.use(forceSsl);
-  }
-  // other configurations etc for express go here...
 });
-
-
 
 app.get('/', (req, res) => {
   res.send('Homeee');
