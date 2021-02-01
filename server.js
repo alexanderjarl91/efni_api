@@ -52,6 +52,10 @@ app.get('/collections', async (req, res) => {
   res.send(collectionObj);
 });
 
+app.use((req, res) => {
+  res.status(400).json({msg: 'Nothing found on this path: ' + req.url})
+});
+
 app.listen(PORT, () => {
   console.log('server running on port: ' + PORT);
 });
