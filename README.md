@@ -3,7 +3,7 @@
 
 ## Description
 
-Using the MERN stack essentials (MongoDB, Express & Node.js) this RESTful API delivers product data for e-commerce frontends. This API is hosted on Heroku and was created for Module 6.
+Using the MERN stack essentials (MongoDB, Express & Node.js) this RESTful API delivers product data for e-commerce frontends. This API is hosted on Heroku and was created for Module 5.
 
 This backend is meant for frontend developers to easily be able create collections for different e-commerce clients, all hosted in one database, and manipulate them using the Efni Headless CMS.
 
@@ -75,3 +75,4 @@ This is a demonstration endpoint that delivers a single document in a specific c
 
 
 #
+as
