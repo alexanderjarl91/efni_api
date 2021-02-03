@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Adidas = require('../models/Adidas');
 
+// Force redirect to https from http
 router.use('*', function (req, res, next) {
   if (req.headers['x-forwarded-proto'] === 'https') {
           // request was via https, so do no special handling
@@ -14,6 +15,9 @@ router.use('*', function (req, res, next) {
 
 // Get all products
 router.get('/', async (req, res) => {
+  // Access the querystring's key property
+  const pars = req.query.key;
+  console.log('pars: ', pars);
   try {
     const products = await Adidas.find();
     res.json(products);

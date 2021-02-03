@@ -23,6 +23,7 @@ const connection = mongoose.connect(MONGO_URI, {useNewUrlParser: true, useUnifie
   console.log('Connected to db...');
 });
 
+// Force redirect to https from http
 app.get('*', function (req, res, next) {
   if (req.headers['x-forwarded-proto'] === 'https') {
           // request was via https, so do no special handling
@@ -34,7 +35,11 @@ app.get('*', function (req, res, next) {
 });
 
 app.get('/', (req, res) => {
-  res.send('Homeee');
+  res.send(`
+  <h1>Efni API</h1>
+  <h2>Open test endpoint: /adidas</h2>
+  <h2>List available collections: /collections</h2>
+  `);
 });
 
 const getDocCount = async () => {
