@@ -1,9 +1,12 @@
 const express = require('express');
+const cors = require('cors');
 const router = express.Router();
 const Nike = require('../models/Nike');
 var admin = require("firebase-admin");
 //var serviceAccount = require("../efni-cms-firebase-adminsdk-61zph-cebca0c788.json");
 const { firestore } = require('firebase-admin');
+
+express().use(cors());
 
 // Initialize firebase 
 // admin.initializeApp({
@@ -175,7 +178,7 @@ router.patch("/:productId", async (req, res) => {
 })
 
 // Delete Post
-router.delete("/:productId", async (req, res) => {
+router.delete("/:productId", cors(), async (req, res) => {
   checkUserAccess(req).then(async () => {
     if(canPost) {
       try {
