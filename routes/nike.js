@@ -14,7 +14,7 @@ const { firestore } = require('firebase-admin');
 // });
 admin.initializeApp({
   "type": process.env.FIREBASE_TYPE,
-  "projectId": process.env.PROJECT_ID,
+  "project_id": process.env.PROJECT_ID,
   "private_key_id": process.env.PRIVATE_KEY_ID,
   "private_key": process.env.PRIVATE_KEY,
   "client_email": process.env.CLIENT_EMAIL,
@@ -77,11 +77,12 @@ router.get("/:productId", async (req, res) => {
 const checkUserAccess = async (req) => {
   // Get an array with firestore user data
   const userData = getUserData();
-
+  const authToken = req.get('Authorization');
+  console.log('token: ', authToken);
   // Get authorized user's token
   const decodedToken = await admin
   .auth()
-  .verifyIdToken(req.get('Authorization'))
+  .verifyIdToken(authToken)
   
   // Match authorized user with a firestore user 
   ;(await userData).forEach((user) => {
