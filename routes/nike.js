@@ -82,10 +82,10 @@ const checkUserAccess = async (req) => {
   // Get authorized user's token
   const decodedToken = await admin
   .auth()
-  .verifyIdToken(authToken)
-  
+  .verifyIdToken(authToken);
+  console.log('dec token: ', decodedToken);
   // Match authorized user with a firestore user 
-  ;(await userData).forEach((user) => {
+  (await userData).forEach((user) => {
     if(user.useruid === decodedToken.uid) {
       // Check if matched user has access to a collection, if true: then flag canPost as true
       if(user.access.includes('nike')) {
