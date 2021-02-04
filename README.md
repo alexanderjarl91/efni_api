@@ -17,6 +17,15 @@ The Efni CMS
 
 https://efni-cms.netlify.app/
 
+## Dependencies
+
+- Express
+- Mongoose
+- Firebase Admin SDK
+- Cors
+- Routes
+
+
 ## Usage & authentication
 
 To create a new collection, backend dev must create a new model and endpoint on the backend, as well as creating a new collection on MongoDB Atlas.
