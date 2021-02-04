@@ -24,6 +24,7 @@ https://efni-cms.netlify.app/
 - Firebase Admin SDK
 - Cors
 - Routes
+- Body Parser
 
 
 ## Usage & authentication
