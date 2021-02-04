@@ -21,7 +21,7 @@ https://efni-cms.netlify.app/
 
 To create a new collection, backend dev must create a new model and endpoint on the backend, as well as creating a new collection on MongoDB Atlas.
 
-All request methods, excluding GET, need to be sent from the CMS. The /adidas demonstration endpoint is open for testing. The GET request is open during development but eventually in later versions will need an API key for access.
+All request methods, excluding GET, need to be sent from the CMS. The /adidas demonstration endpoint is left open for testing. The GET request is open during development but eventually in later versions will need an API key for access.
 
 
 ## Security
