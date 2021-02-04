@@ -11,15 +11,14 @@ const Adidas = require('./models/Adidas');
 
 const PORT = process.env.PORT || 5000;
 
-const test = (res, req, next) => {
-  req.test = req.test || 0;
-  console.log('test ', req.test);
-  req.test++;
-  next();
-};
-app.use(test);
+// Test function for debugging
+// const test = (res, req, next) => {
+//   req.test = req.test || 0;
+//   console.log('test ', req.test);
+//   req.test++;
+//   next();
+// };
 app.use(cors());
-app.use(test);
 
 // app.use(function (req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*");
@@ -29,9 +28,7 @@ app.use(test);
 // });
 // app.options('*', cors());
 app.use(bodyParser.json());
-app.use(test);
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(test);
 
 // app.use(function(req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*");
@@ -41,9 +38,7 @@ app.use(test);
 
 
 app.use("/nike", nikeRoute);
-app.use(test);
 app.use("/adidas", adidasRoute);
-app.use(test);
 const MONGO_URI = process.env.MONGODB_URI;
 
 const connection = mongoose.connect(MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true}, () => {

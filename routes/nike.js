@@ -12,7 +12,6 @@ const { firestore } = require('firebase-admin');
 // admin.initializeApp({
 //   credential: admin.credential.cert(serviceAccount)
 // });
-console.log('pk: ', process.env.PRIVATE_KEY);
 admin.initializeApp({
   credential: admin.credential.cert({
     "type": process.env.FIREBASE_TYPE,
@@ -81,13 +80,10 @@ const checkUserAccess = async (req) => {
   // Get an array with firestore user data
   const userData = getUserData();
   const authToken = req.get('Authorization');
-  console.log('token: ', authToken);
-  console.log('id: ', process.env.PROJECT_ID)
   // Get authorized user's token
   const decodedToken = await admin
   .auth()
   .verifyIdToken(authToken);
-  console.log('dec token: ', decodedToken);
   // Match authorized user with a firestore user 
   (await userData).forEach((user) => {
     if(user.useruid === decodedToken.uid) {
