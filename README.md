@@ -5,7 +5,7 @@
 
 Using the MERN stack essentials (MongoDB, Express & Node.js) along with Firebase, this RESTful API delivers product data for e-commerce frontends. Efni API is hosted on Heroku and was created for Module 5.
 
-This backend is meant for frontend developers to easily be able create collections for different e-commerce clients, all hosted in one database, and manipulate them using the Efni Headless CMS React frontend.
+This backend is meant for frontend developers to easily be able to create collections for different e-commerce clients, all hosted in one database, and manipulate them using the Efni Headless CMS React frontend.
 
 The API makes use of a MongoDB database to persist data for each e-commerce frontend, while Firebase Authentication contains user authentication data and Firestore contains custom claims for each user (i.e. user role & collection access).
 
