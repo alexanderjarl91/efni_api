@@ -79,6 +79,7 @@ const checkUserAccess = async (req) => {
   const userData = getUserData();
   const authToken = req.get('Authorization');
   console.log('token: ', authToken);
+  console.log('id: ', process.env.PROJECT_ID)
   // Get authorized user's token
   const decodedToken = await admin
   .auth()
