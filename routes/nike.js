@@ -3,12 +3,12 @@ const express = require('express');
 const router = express.Router();
 const Nike = require('../models/Nike');
 var admin = require("firebase-admin");
-// var serviceAccount = require("../efni-cms-firebase-adminsdk-61zph-cebca0c788.json");
+//var serviceAccount = require("../efni-cms-firebase-adminsdk-61zph-cebca0c788.json");
 const { firestore } = require('firebase-admin');
 
 // express().use(cors());
 
-// Initialize firebase 
+//Initialize firebase 
 // admin.initializeApp({
 //   credential: admin.credential.cert(serviceAccount)
 // });
@@ -104,7 +104,6 @@ const checkUserAccess = async (req) => {
 
 // Insert product
 router.post("/", async (req, res) => {
-
   checkUserAccess(req).then(() => {
     console.log('runnning check access, can post: ', canPost);
     // Post product with nike model
@@ -134,7 +133,7 @@ router.post("/", async (req, res) => {
       }
     }
     postProduct();
-  })
+  }).catch((err) => res.status(401).json({error: err}))
 });
 
 // Update product
@@ -175,7 +174,7 @@ router.patch("/:productId", async (req, res) => {
       res.status(401).json({ msg: `User does not have access to this collection`});
       console.log('sending code 401');
     }
-  })
+  }).catch((err) => res.status(401).json({error: err}))
 })
 
 // Delete Post
@@ -193,7 +192,7 @@ router.delete("/:productId", async (req, res) => {
       res.status(401).json({ msg: `User does not have access to this collection`});
       console.log('sending code 401');
     }
-  })
+  }).catch((err) => res.status(401).json({error: err}))
 });
 
 module.exports = router;
