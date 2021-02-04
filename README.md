@@ -3,16 +3,39 @@
 
 ## Description
 
-Using the MERN stack essentials (MongoDB, Express & Node.js) this RESTful API delivers product data for e-commerce frontends. This API is hosted on Heroku and was created for Module 5.
+Using the MERN stack essentials (MongoDB, Express & Node.js) along with Firebase, this RESTful API delivers product data for e-commerce frontends. Efni API is hosted on Heroku and was created for Module 5.
 
-This backend is meant for frontend developers to easily be able create collections for different e-commerce clients, all hosted in one database, and manipulate them using the Efni Headless CMS.
+This backend is meant for frontend developers to easily be able to create collections for different e-commerce clients, all hosted in one database, and manipulate them using the Efni Headless CMS React frontend.
 
+The API makes use of a MongoDB database to persist data for each e-commerce frontend, while Firebase Authentication contains user authentication data and Firestore contains custom claims for each user (i.e. user role & collection access).
+
+Root Endpoint:
 https://efni-api.herokuapp.com/
 
 
-## Authentication
+The Efni CMS 
 
-This API contains confidential information and therefore an API key is required to access it's endpoints. If you want to use Efni CMS to manage your e-commerce data, contact us for an API key and further information.
+https://efni-cms.netlify.app/
+
+## Dependencies
+
+- Express
+- Mongoose
+- Firebase Admin SDK
+- Cors
+- Routes
+- Body Parser
+
+
+## Usage & authentication
+
+To create a new collection, backend dev must create a new model and endpoint on the backend, as well as creating a new collection on MongoDB Atlas.
+
+All request methods, excluding GET, need to be sent from the CMS. The /adidas demonstration endpoint is left open for testing. The GET request is open during development but eventually in later versions will need an API key for access.
+
+
+## Security
+Both the API and CMS are SSL certified. Request methods to the API are restricted to authenticated users within the CMS with Firebase authentication tokens, specific roles & access. 
 
 
 ## Responses
@@ -46,23 +69,23 @@ GET /yourEcommerceEndpoint
 https://efni-api.herokuapp.com/collections
 ```
 
-This endpoint lists all collections within the database. Each e-commerce website will have its unique collection that contains data. 
-
-### /nike
-
-```
-https://efni-api.herokuapp.com/nike
-```
-
-This is a an open demonstration endpoint. This example lists an array of products from the nike collection.
+This endpoint lists all collections within the database. Each e-commerce website has its unique collection of data. 
 
 ### /adidas
 
 ```
 https://efni-api.herokuapp.com/adidas
 ```
+This is a an open demonstration endpoint. This example lists an array of products from the adidas collection.
 
-This is a locked demonstration endpoint that delivers the adidas collection. It lists products using the same model as the the /nike endpoint but is only accessable with an API key.
+
+### /nike
+
+```
+https://efni-api.herokuapp.com/nike
+```
+This is a locked demonstration endpoint that delivers the nike collection. This endpoint only accepts request methods from users authenticated with Google Firebase within the CMS frontend.
+
 
 
 ### /collection/<_id>
@@ -71,8 +94,7 @@ This is a locked demonstration endpoint that delivers the adidas collection. It 
 https://efni-api.herokuapp.com/YourCollection/YourProductID
 ```
 
-This is a demonstration endpoint that delivers a single document in a specific collection.
+This is an open demonstration endpoint that delivers a single document in a specific collection.
 
 
 #
-as
