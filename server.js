@@ -57,11 +57,7 @@ app.get('*', function (req, res, next) {
 });
 
 app.get('/', (req, res) => {
-  res.send(`
-  <h1>Efni API</h1>
-  <h2>Open test endpoint: /adidas</h2>
-  <h2>List available collections: /collections</h2>
-  `);
+  res.redirect('https://efni-cms.netlify.app/');
 });
 
 const getDocCount = async () => {
